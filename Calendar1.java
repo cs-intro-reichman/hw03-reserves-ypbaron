@@ -13,8 +13,8 @@ public class Calendar1 {
 	 * Prints the calendars of all the years in the 20th century. Also prints the  
 	 * number of Sundays that occured on the first day of the month during this period.
 	 */
-	public static void main(String args[]) {
-		// Advances the date and the day-of-the-week from 1/1/1900 till 31/12/1999, inclusive.
+	public static void main(String args[]) {	
+			// Advances the date and the day-of-the-week from 1/1/1900 till 31/12/1999, inclusive.
 	    // Prints each date dd/mm/yyyy in a separate line. If the day is a Sunday, prints "Sunday".
 	    // The following variable, used for debugging purposes, counts how many days were advanced so far.
 	    int debugDaysCounter = 0; 
@@ -37,12 +37,25 @@ public class Calendar1 {
 	 // If the month changes, sets the number of days in this month.
 	 // Side effects: changes the static variables dayOfMonth, month, year, dayOfWeek, nDaysInMonth.
 	 private static void advance() {
-		// Replace this comment with your code
-	 } 
+			for (year = 1900, year <= 1999, year++){
+				for(month = 1; month <= 12; month++){
+					for(dayOfMonth = 1; dayOfMonth <= nDaysInMonth; dayOfMonth++){
+						if month // how do I check about how many days 
+						for(dayOfWeek = 2; dayOfWeek <= 7; dayOfWeek++){ 
+							if (dayOfWeek = 0);
+							System.out.println("Sunday");
+						}
+					}
+				}
+			}
+		}
+	 
 		 
     // Returns true if the given year is a leap year, false otherwise.
 	private static boolean isLeapYear(int year) {
-	    // Replace the following statement with your code
+	    if (((year % 400) == 0) || (((year % 4) == 0) &&((year % 100) != 0))) {
+			return true;
+		}
 		return false;
 	}
 	 

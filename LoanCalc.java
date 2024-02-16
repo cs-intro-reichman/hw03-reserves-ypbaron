@@ -39,10 +39,22 @@ public class LoanCalc {
 	*/
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
-    	// Replace the following statement with your code
-    	return 0;
-    }
-    
+		double epsilon = 0.01, increment = 0.0001;
+		double g = 1.0;
+		int iterationCounter = 0;
+		while ((Math.abs(g * g - x) >= epsilon) && (g <= x)) {
+		g += increment;
+	iterationCounter++
+	}
+		if (g > x) {
+		System.out.println("Failed to find a solution");
+		} else {
+		System.out.println("Square root (approx.) = " + g);
+		}
+	}
+}
+   
+  
     /**
 	* Uses bisection search to compute an approximation of the periodical payment 
 	* that will bring the ending balance of a loan close to 0.
@@ -50,8 +62,18 @@ public class LoanCalc {
 	* the number of periods (n), and epsilon, a tolerance level.
 	*/
 	// Side effect: modifies the class variable iterationCounter.
-    public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
-    	// Replace the following statement with your code
+   public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
+		double L = 1.0, H = -1.0;
+		double g = (L + H) / 2.0;
+		int iterationCounter = 0;
+		while ((H - L) >= epsilon){ 
+			if (f(g) * f(L) > 0)
+				L = g;
+			else
+				H = g;
+			g = (L + H) / 2;
+			iterationCounter++;
+		}
     	return 0;
     }
 	
@@ -59,8 +81,8 @@ public class LoanCalc {
 	* Computes the ending balance of a loan, given the sum of the loan, the periodical
 	* interest rate (as a percentage), the number of periods (n), and the periodical payment.
 	*/
-	private static double endBalance(double loan, double rate, int n, double payment) {
-		// Replace the following statement with your code
-    	return 0;
-	}
-}
+	//private static double endBalance(double loan, double rate, int n, double payment) {
+		Replace the following statement with your code
+	return 0;
+	//}
+//}
