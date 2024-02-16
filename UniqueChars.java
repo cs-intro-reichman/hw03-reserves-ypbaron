@@ -14,7 +14,6 @@ public class UniqueChars {
         String newString = "";
 		for (int i = 0; i < s.length(); i++) {
 			char ch = s.charAt(i);
-			System.out.println(ch);
 			if (ch == ' ') {
 				newString += ch;
 			} else {
