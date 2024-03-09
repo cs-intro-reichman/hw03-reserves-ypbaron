@@ -1,7 +1,7 @@
 /** 
  * Prints the calendars of all the years in the 20th century.
  */
-public class Calendar1 {	
+public class Calendar {	
     // Starting the calendar on 1/1/1900
 	static int dayOfMonth = 1;   
 	static int month = 1;
@@ -18,21 +18,20 @@ public class Calendar1 {
 	    // Prints each date dd/mm/yyyy in a separate line. If the day is a Sunday, prints "Sunday".
 	    // The following variable, used for debugging purposes, counts how many days were advanced so far.
 	    int debugDaysCounter = 0; 
+		int yearToPrint = Integer.parseInt(args[0]);
+
 	    //// Write the necessary initialization code, and replace the condition
 	    //// of the while loop with the necessary condition
-		int SundayFirstDayOfMonthCount = 0;
-	 	while (year < 2000) {
+	 	while (year < yearToPrint + 1) {
 	 		//// Write the body of the while 		
 	 		
 			// prints the new date
-			System.out.print(dayOfMonth + "/" + month + "/" + year);
-			if (dayOfWeek == 1) {
-				System.out.print(" Sunday");
-			}
-			System.out.println();
-
-			if (dayOfMonth == 1 && dayOfWeek == 1) {
-				SundayFirstDayOfMonthCount++;
+			if (yearToPrint == year) {
+				System.out.print(dayOfMonth + "/" + month + "/" + year);
+				if (dayOfWeek == 1) {
+					System.out.print(" Sunday");
+				}
+				System.out.println();
 			}
 
 			advance(); // increase to the new date
@@ -43,10 +42,7 @@ public class Calendar1 {
 	 		// if (debugDaysCounter == 5000) { 
 	 		// 	break;
 	 		// }
-        }
-	 	//// Write the necessary ending code here
-		System.out.println("During the 20th century, " + SundayFirstDayOfMonthCount + " Sundays fell on the first day of the month");
-	 }
+        }	 }
 	
 	 // Advances the date (day, month, year) and the day-of-the-week.
 	 // If the month changes, sets the number of days in this month.
