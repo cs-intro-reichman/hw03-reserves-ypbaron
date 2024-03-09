@@ -19,36 +19,62 @@ public class Calendar1 {
 	    // The following variable, used for debugging purposes, counts how many days were advanced so far.
 	    int debugDaysCounter = 0; 
 	    //// Write the necessary initialization code, and replace the condition
-	    //// of the while loop with the necessary condition 
-	 	while (true) {
+	    //// of the while loop with the necessary condition
+		int SundayFirstDayOfMonthCount = 0;
+		int n = Integer.parseInt(args[0]);
+	 	while (year < 2000) {
 	 		//// Write the body of the while 		
-	 		advance();
+	 		
+			// prints the new date
+			System.out.print(dayOfMonth + "/" + month + "/" + year);
+			if (dayOfWeek == 1) {
+				System.out.print(" Sunday");
+			}
+			System.out.println();
+
+			if (dayOfMonth == 1 && dayOfWeek == 1) {
+				SundayFirstDayOfMonthCount++;
+			}
+
+			advance(); // increase to the new date
 	 		debugDaysCounter++;
+
 	 		//// If you want to stop the loop after n days, replace the condition of the
 	 		//// if statement with the condition (debugDaysCounter == n)
-	 		if (false) { 
+	 		if (debugDaysCounter == n) { 
 	 			break;
 	 		}
         }
 	 	//// Write the necessary ending code here
+		System.out.println("During the 20th century, " + SundayFirstDayOfMonthCount + " Sundays fell on the first day of the month");
 	 }
 	
 	 // Advances the date (day, month, year) and the day-of-the-week.
 	 // If the month changes, sets the number of days in this month.
 	 // Side effects: changes the static variables dayOfMonth, month, year, dayOfWeek, nDaysInMonth.
 	 private static void advance() {
-			for (year = 1900, year <= 1999, year++){
-				for(month = 1; month <= 12; month++){
-					for(dayOfMonth = 1; dayOfMonth <= nDaysInMonth; dayOfMonth++){
-						if month // how do I check about how many days 
-						for(dayOfWeek = 2; dayOfWeek <= 7; dayOfWeek++){ 
-							if (dayOfWeek = 0);
-							System.out.println("Sunday");
-						}
-					}
-				}
+		if (dayOfMonth == nDaysInMonth) { // if last day of month
+			dayOfMonth = 1; // then reset the dayOfMonth
+
+			if (month == 12) { // if was the last month
+				month = 1; // then reset month
+
+				year++; // and also increase the year
+			} else {
+				month++; // increase the month
 			}
+			nDaysInMonth = nDaysInMonth(month, year); // then get the new month number of days
+		} else {
+			dayOfMonth++; // for every normal day, increase the day
 		}
+
+		// checks if the last day of week
+		if (dayOfWeek == 7) {
+			dayOfWeek = 1; // then reset the dayOfWeek
+		} else {
+			dayOfWeek++; // else just increase the dayOfWeek
+		}
+	}
 	 
 		 
     // Returns true if the given year is a leap year, false otherwise.
@@ -64,7 +90,36 @@ public class Calendar1 {
 	// February has 28 days in a common year, and 29 days in a leap year.
 	// All the other months have 31 days.
 	private static int nDaysInMonth(int month, int year) {
-		// Replace the following statement with your code
+		switch (month) {
+			case 1:
+				return 31;
+			case 2:
+				if (isLeapYear(year) == true){
+					return 29; 
+				} else {
+					return 28;
+				}
+			case 3:
+				return 31;
+			case 4:
+				return 30;
+			case 5:
+				return 31;
+			case 6:
+				return 30;
+			case 7:
+				return 31;
+			case 8:
+				return 31;
+			case 9:
+				return 30;
+			case 10:
+				return 31;
+			case 11:
+				return 30;
+			case 12:
+				return 31;
+			}
 		return 0;
 	}
 }
