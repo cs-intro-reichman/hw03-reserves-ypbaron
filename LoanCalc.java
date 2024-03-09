@@ -13,14 +13,14 @@ public class LoanCalc {
      */
 	public static void main(String[] args) {		
 		// Gets the loan data
-		double loan = Double.parseDouble(args[0]);
-		double rate = Double.parseDouble(args[1]);
-		int n = Integer.parseInt(args[2]);
+		// double loan = Double.parseDouble(args[0]);
+		// double rate = Double.parseDouble(args[1]);
+		// int n = Integer.parseInt(args[2]);
 
-		// // TODO: REMOVE
-		// double loan = 100000;
-		// double rate = 5;
-		// int n = 10;
+		// TODO: REMOVE
+		double loan = 100000;
+		double rate = 5;
+		int n = 10;
 
 		System.out.println("Loan sum = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 		
@@ -29,6 +29,8 @@ public class LoanCalc {
 		System.out.printf("%.2f", bruteForceSolver(loan, rate, n, epsilon));
 		System.out.println();
 		System.out.println("number of iterations: " + iterationCounter);
+
+		iterationCounter = 0;
 
 		// Computes the periodical payment using bisection search
 		System.out.print("Periodical payment, using bi-section search: ");
@@ -62,7 +64,31 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
     	// Replace the following statement with your code
-    	return 0;
+		
+		// Sets L and H to initial values such that �(�) > 0, �(�) < 0,
+		// implying that the function evaluates to zero somewhere between L and H.
+		// So, let’s assume that L and H were set to such initial values.
+		// Set g to (L + H)/2
+
+		double L = loan / n;
+		double H = loan;
+		double g = (L + H) / 2;
+
+		while ((H - L) > epsilon) {
+			// Sets L and H for the next iteration
+			if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, L) > 0) {
+				// the solution must be between g and H
+				// so set L or H accordingly
+				L = g;
+			} else {
+				// the solution must be between L and g
+				// so set L or H accordingly
+				H = g;
+			}
+			g = (L + H) / 2;
+			iterationCounter++;
+		}
+		return g;
     }
 	
 	/**
